@@ -4,6 +4,9 @@ import (
 	"strconv"
 )
 
+// https://leetcode.cn/problems/palindrome-number/description/
+// 9. 回文数
+
 func isPalindrome(x int) bool {
 	if x < 0 {
 		return false
