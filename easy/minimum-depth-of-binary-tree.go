@@ -12,14 +12,14 @@ func minDepth(root *TreeNode) int {
 		return 0
 	}
 	p := []*TreeNode{root}
-	depth := 1
+	depth := 0
 	for len(p) > 0 {
 		pLen := len(p)
 		for range pLen {
 			cur := p[0]
 			p = p[1:]
 			if cur.Left == nil && cur.Right == nil {
-				return depth
+				return depth+1
 			}
 			if cur.Left != nil {
 				p = append(p, cur.Left)
@@ -28,7 +28,7 @@ func minDepth(root *TreeNode) int {
 				p = append(p, cur.Right)
 			}
 		}
-		depth++
+		depth ++
 	}
 	return depth
 }

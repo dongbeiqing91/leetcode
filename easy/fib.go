@@ -1,19 +1,14 @@
 package easy
 
+// 0、1、1、2、3、5、8、13、21、34、55、89、144
 func fib(n int) int {
 	if n <= 1 {
 		return n
 	}
-	if n == 2 {
-		return 1
-	}
-	var res int
-	a1 := 1
-	a2 := 1
+	prev := 0
+	curr := 1
 	for i := 3; i <= n; i++ {
-		res = a1 + a2
-		a1 = a2
-		a2 = res
+		prev, curr = curr, prev+curr
 	}
-	return res
+	return curr
 }
