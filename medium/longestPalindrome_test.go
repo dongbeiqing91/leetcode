@@ -9,38 +9,25 @@ import (
 // 5. 最长回文子串
 
 func longestPalindrome(s string) string {
-	maxLen := 1
-	startIndex := 0
+	start, maxLen := 0, 0
 
-	for i := 0; i < len(s); i++ {
-		// 回文子串字符数为奇数，如bab
-		l := i
-		r := i
-		for l >= 0 && r < len(s) && s[l] == s[r] {
-			length := r - l + 1
-			if length > maxLen {
-				maxLen = length
-				startIndex = l
+	expand := func(left, right int) {
+		for left >= 0 && right < len(s) && s[left] == s[right] {
+			if right-left+1 > maxLen {
+				start = left
+				maxLen = right - left + 1
 			}
-			l--
-			r++
-		}
-
-		// 回文子串字符数为偶数，如abba
-		l = i
-		r = i + 1
-		for l >= 0 && r < len(s) && s[l] == s[r] {
-			length := r - l + 1
-			if length > maxLen {
-				maxLen = length
-				startIndex = l
-			}
-			l--
-			r++
+			left--
+			right++
 		}
 	}
 
-	return s[startIndex : startIndex+maxLen]
+	for i := 0; i < len(s); i++ {
+		expand(i, i)   // 回文子串字符数为奇数，如bab
+		expand(i, i+1) // 回文子串字符数为偶数，如abba
+	}
+
+	return s[start : start+maxLen]
 }
 
 func TestResult3(t *testing.T) {

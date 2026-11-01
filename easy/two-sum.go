@@ -14,13 +14,13 @@ func twoSum(nums []int, target int) []int {
 }
 
 func twoSum2(nums []int, target int) []int {
-	hash := map[int]int{}
+	m := map[int]int{}
 	for index, num := range nums {
-		expected := target - num
-		if expectedIndex, ok := hash[expected]; ok {
-			return []int{index, expectedIndex}
+		x := target - num
+		if xIndex, ok := m[x]; ok {
+			return []int{index, xIndex}
 		}
-		hash[num] = index
+		m[num] = index // 这一行不能放到 for 循环的最前面, 避免找到自己, 比如nums: [3,2,4], target=6, 6-3=3 这种情况
 	}
 	return nil
 }

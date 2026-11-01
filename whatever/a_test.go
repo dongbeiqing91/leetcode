@@ -23,3 +23,15 @@ func TestC(t *testing.T) {
 	m2 := m1[0:0]
 	fmt.Print(m2)
 }
+
+func TestD(t *testing.T) {
+	var a = make([]int, 1)
+	a[0] = 1
+	a = append(a, 2)
+	fmt.Print(a)
+}
+type Node[T comparable] struct {
+    val  T
+    next *Node[T]
+    prev *Node[T]
+}
