@@ -1,6 +1,6 @@
 package easy
 
-// https://leetcode.cn/problems/roman-to-integer/submissions/641113463/
+// https://leetcode.cn/problems/roman-to-integer/description/
 // 13. 罗马数字转整数
 
 var mapping = map[byte]int{

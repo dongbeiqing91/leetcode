@@ -1,4 +1,4 @@
-package easy
+package medium
 
 // https://leetcode.cn/problems/reverse-linked-list-ii/
 
