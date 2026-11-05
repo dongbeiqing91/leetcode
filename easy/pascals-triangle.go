@@ -4,12 +4,12 @@ package easy
 
 func generate(numRows int) [][]int {
 	res := make([][]int, numRows)
-	for line := range res {
-		res[line] = make([]int, line+1)
-		res[line][0] = 1
-		res[line][line] = 1
-		for i := 1; i < line; i++ {
-			res[line][i] = res[line-1][i-1] + res[line-1][i]
+	for row := range res {
+		res[row] = make([]int, row+1)
+		res[row][0] = 1
+		res[row][row] = 1
+		for i := 1; i < row; i++ {
+			res[row][i] = res[row-1][i-1] + res[row-1][i]
 		}
 	}
 	return res
