@@ -43,11 +43,12 @@ func kSmallestPairs(nums1 []int, nums2 []int, k int) [][]int {
 		heap.Push(pq, []int{nums1[i], nums2[0], 0})
 	}
 	var res [][]int
-	for len(*pq) > 0 && k > 0 {
+	for pq.Len() > 0 && k > 0 {
 		cur := heap.Pop(pq).([]int)
 		k--
 		nextIndex := cur[2] + 1
 		if nextIndex < len(nums2) {
+			// 从堆里弹出一个对 (nums1[i], nums2[j]) 之后，只需把同一行的下一个 (i, j+1) 放进堆
 			heap.Push(pq, []int{cur[0], nums2[nextIndex], nextIndex})
 		}
 		n := []int{cur[0], cur[1]}
