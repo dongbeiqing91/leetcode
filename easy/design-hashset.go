@@ -1,16 +1,17 @@
 package easy
 
+// https://leetcode.cn/problems/design-hashset/description/
+
 import "container/list"
 
 const base = 769
 
 type MyHashSet struct {
-    data []list.List
+	data []list.List
 }
 
-
 func Constructor() MyHashSet {
-    return MyHashSet{
+	return MyHashSet{
 		data: make([]list.List, base),
 	}
 }
@@ -19,17 +20,16 @@ func (this *MyHashSet) hash(key int) int {
 	return key % base
 }
 
-func (this *MyHashSet) Add(key int)  {
-    if this.Contains(key) {
+func (this *MyHashSet) Add(key int) {
+	if this.Contains(key) {
 		return
 	}
 	h := this.hash(key)
 	this.data[h].PushBack(key)
 }
 
-
-func (this *MyHashSet) Remove(key int)  {
-    h := this.hash(key)
+func (this *MyHashSet) Remove(key int) {
+	h := this.hash(key)
 	for e := this.data[h].Front(); e != nil; e = e.Next() {
 		if e.Value.(int) == key {
 			this.data[h].Remove(e)
@@ -37,9 +37,8 @@ func (this *MyHashSet) Remove(key int)  {
 	}
 }
 
-
 func (this *MyHashSet) Contains(key int) bool {
-    h := this.hash(key)
+	h := this.hash(key)
 	for e := this.data[h].Front(); e != nil; e = e.Next() {
 		if e.Value.(int) == key {
 			return true
@@ -47,7 +46,6 @@ func (this *MyHashSet) Contains(key int) bool {
 	}
 	return false
 }
-
 
 /**
  * Your MyHashSet object will be instantiated and called as such:
